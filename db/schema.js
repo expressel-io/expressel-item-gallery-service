@@ -91,17 +91,17 @@ const createDummyData = (numberOfRecords) => {
         for (let picture = 0; picture < randomPictureCount; picture += 1) {
           const randomFolderNumber = Math.floor(Math.random() * Math.floor(20) + 1);
           const randomImageNumber = Math.floor(Math.random() * Math.floor(20) + 1);
-          itemColor1Images += `Images/fullsize/images_${randomFolderNumber}/image-${randomImageNumber}.jpg,`;
-          itemColor1Thumbnails += `Images/thumbnails/images_${randomFolderNumber}/image-${randomImageNumber}_thumb.jpg,`;
-          itemColor1ButtonImage = `Images/button_image/images_${randomFolderNumber}/image-${randomImageNumber}_thumb.jpg,`;
+          itemColor1Images += `images/fullsize/images_${randomFolderNumber}/image-${randomImageNumber}.jpg,`;
+          itemColor1Thumbnails += `images/thumbnails/images_${randomFolderNumber}/image-${randomImageNumber}_thumb.jpg,`;
+          itemColor1ButtonImage = `images/button_image/images_${randomFolderNumber}/image-${randomImageNumber}_thumb.jpg,`;
         }
       } else {
         for (let picture = 0; picture < randomPictureCount; picture += 1) {
           const randomFolderNumber = Math.floor(Math.random() * Math.floor(20) + 1);
           const randomImageNumber = Math.floor(Math.random() * Math.floor(20) + 1);
-          itemColor2Images += `Images/fullsize/images_${randomFolderNumber}/image-${randomImageNumber}.jpg,`;
-          itemColor2Thumbnails += `Images/thumbnails/images_${randomFolderNumber}/image-${randomImageNumber}_thumb.jpg,`;
-          itemColor2ButtonImage = `Images/button_image/images_${randomFolderNumber}/image-${randomImageNumber}_thumb.jpg,`;
+          itemColor2Images += `images/fullsize/images_${randomFolderNumber}/image-${randomImageNumber}.jpg,`;
+          itemColor2Thumbnails += `images/thumbnails/images_${randomFolderNumber}/image-${randomImageNumber}_thumb.jpg,`;
+          itemColor2ButtonImage = `images/button_image/images_${randomFolderNumber}/image-${randomImageNumber}_thumb.jpg,`;
         }
       }
     }
@@ -159,17 +159,18 @@ connection.query(`INSERT INTO items (
   'It''s razor thin, feather light, and even faster and more powerful than before. It has a bright, colorful notebook display. And it features the Touch Bar - a multi-touch enabled strip of glass built into the keyboard for instant access to the tools you want, right when you want them. MacBook Pro is built on groundbreaking ideas. And it''s ready for yours.',
   'Silver',
   'Space Grey',
-  'Images/fullsize/macbook/silver/13Silver.jpg,Images/fullsize/macbook/silver/13Silver2.jpg,Images/fullsize/macbook/silver/15Silver2.jpg,Images/fullsize/macbook/silver/15Silver3.jpg,Images/fullsize/macbook/silver/15Silver4.jpg',
-  'Images/fullsize/macbook/space_grey/13SpaceGrey.jpg,Images/fullsize/macbook/space_grey/13SpaceGrey2.jpg,Images/fullsize/macbook/space_grey/13SpaceGrey3.jpg,Images/fullsize/macbook/space_grey/13SpaceGrey4.jpg,Images/fullsize/macbook/space_grey/15SpaceGrey.jpg,Images/fullsize/macbook/space_grey/15SpaceGrey2.jpg',
-  'Images/thumbnails/macbook/silver/13Silver.jpg,Images/thumbnails/macbook/silver/13Silver2.jpg,Images/thumbnails/macbook/silver/15Silver2.jpg,Images/thumbnails/macbook/silver/15Silver3.jpg,Images/thumbnails/macbook/silver/15Silver4.jpg',
-  'Images/thumbnails/macbook/space_grey/13SpaceGrey.jpg,Images/thumbnails/macbook/space_grey/13SpaceGrey2.jpg,Images/thumbnails/macbook/space_grey/13SpaceGrey3.jpg,Images/thumbnails/macbook/space_grey/13SpaceGrey4.jpg,Images/thumbnails/macbook/space_grey/15SpaceGrey.jpg,Images/thumbnails/macbook/space_grey/15SpaceGrey2.jpg',
-  'Images/button_image/macbook/silver/15Silver2_thumb.jpg',
-  'Images/button_image/macbook/space_grey/15SpaceGrey2_thumb.jpg',
+  'images/fullsize/macbook/silver/13Silver.jpg,images/fullsize/macbook/silver/13Silver2.jpg,images/fullsize/macbook/silver/15Silver2.jpg,images/fullsize/macbook/silver/15Silver3.jpg,images/fullsize/macbook/silver/15Silver4.jpg',
+  'images/fullsize/macbook/space_grey/13SpaceGrey.jpg,images/fullsize/macbook/space_grey/13SpaceGrey2.jpg,images/fullsize/macbook/space_grey/13SpaceGrey3.jpg,images/fullsize/macbook/space_grey/13SpaceGrey4.jpg,images/fullsize/macbook/space_grey/15SpaceGrey.jpg,images/fullsize/macbook/space_grey/15SpaceGrey2.jpg',
+  'images/thumbnails/macbook/silver/13Silver.jpg,images/thumbnails/macbook/silver/13Silver2.jpg,images/thumbnails/macbook/silver/15Silver2.jpg,images/thumbnails/macbook/silver/15Silver3.jpg,images/thumbnails/macbook/silver/15Silver4.jpg',
+  'images/thumbnails/macbook/space_grey/13SpaceGrey.jpg,images/thumbnails/macbook/space_grey/13SpaceGrey2.jpg,images/thumbnails/macbook/space_grey/13SpaceGrey3.jpg,images/thumbnails/macbook/space_grey/13SpaceGrey4.jpg,images/thumbnails/macbook/space_grey/15SpaceGrey.jpg,images/thumbnails/macbook/space_grey/15SpaceGrey2.jpg',
+  'images/button_image/macbook/silver/15Silver2_thumb.jpg',
+  'images/button_image/macbook/space_grey/15SpaceGrey2_thumb.jpg',
   '13-Inch,15-Inch',
   'false',
   2129
 );`, (error) => {
   if (error) throw error;
-  // Once database, table, and MackBook data is has been completed, call createDummyData to generate remaining documents:
+  // Once database, table, and MackBook data is has been completed,
+  // call createDummyData to generate remaining documents:
   createDummyData(99);
 });

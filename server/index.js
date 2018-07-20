@@ -1,6 +1,6 @@
 const express = require('express');
 
-const path = require('path');
+// const path = require('path');
 
 const bodyParser = require('body-parser');
 
@@ -18,7 +18,7 @@ app.get('/home', (req, res) => {
 
 app.get('/redirect', jsonParser, (req, res) => {
   if (!req.body) return res.sendStatus(400);
-  res.send('A redirect action has been recieved');
+  return res.send('A redirect action has been recieved');
 });
 
 app.listen(3001);

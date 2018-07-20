@@ -50,7 +50,7 @@ const createOptionAndPictureCount = () => {
 const createItemOptions = (optionCount) => {
   let itemOptions = '';
   for (let i = 0; i < optionCount; i += 1) {
-    if (i < optionCount) {
+    if (i < optionCount - 1) {
       itemOptions += `${faker.hacker.adjective()}, `;
     } else {
       itemOptions += `${faker.hacker.adjective()}`;
@@ -206,4 +206,12 @@ connection.query(`INSERT INTO items (
   createDummyData(99);
 });
 
-module.exports = createDummyData;
+module.exports = {
+  createDummyData,
+  createItemOptions,
+  createFolderAndImageNumber,
+  createImagePath,
+  createThumbnailPath,
+  createButtonPath,
+  escapeSingleQuotes,
+};

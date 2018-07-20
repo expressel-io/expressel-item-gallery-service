@@ -21,3 +21,22 @@ const convertStringToArray = (string) => {
   }
   return resultArray;
 };
+
+const pullItemInfo = (itemID) => {
+  connection.query('SELECT * FROM items WHERE Item_ID = ?', [itemID], (error, results) => {
+    if (error) throw error;
+    const data = results[0];
+    const convertedResults = {};
+    convertedResults.itemName = data.Item_Name;
+    convertedResults.itemDescription = data.Item_Description;
+    convertedResults.itemColor1 = data.Item_Color_1;
+    convertedResults.itemColor2 = data.Item_Color_2;
+    convertedResults.itemLowestPrice = data.Item_Lowest_Price;
+    convertedResults.itemRating = data.Item_Rating;
+  });
+};
+
+module.exports = {
+  convertStringToArray,
+  pullItemInfo,
+};

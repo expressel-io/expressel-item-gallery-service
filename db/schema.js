@@ -40,6 +40,57 @@ connection.query(`CREATE TABLE IF NOT EXISTS items (
   if (error) throw error;
 });
 
+// Use to generate a random option or picture count
+const createOptionAndPictureCount = () => {
+  const optionAndPictureCount = faker.random.number({ min: 1, max: 6 });
+  return optionAndPictureCount;
+};
+
+// Used to generate a random list of item options
+const createItemOptions = (optionCount) => {
+  let itemOptions = '';
+  for (let i = 0; i < optionCount; i += 1) {
+    if (i < optionCount) {
+      itemOptions += `${faker.hacker.adjective()}, `;
+    } else {
+      itemOptions += `${faker.hacker.adjective()}`;
+    }
+  }
+  return itemOptions;
+};
+
+// Used to generate random folder or image numbers
+const createFolderAndImageNumber = () => {
+  const folderNumber = faker.random.number({ min: 1, max: 20 });
+  return folderNumber;
+};
+
+// Used to generate folderpaths to fullsize images
+const createImagePath = (folderNumber, imageNumber) => {
+  const imagePath = `images/fullsize/images_${folderNumber}/image-${imageNumber}.jpg,`;
+  return imagePath;
+};
+
+// Used to generate folderpaths to thumbnail images
+const createThumbnailPath = (folderNumber, imageNumber) => {
+  const thumbnailPath = `images/thumbnails/images_${folderNumber}/image-${imageNumber}_thumb.jpg,`;
+  return thumbnailPath;
+};
+
+// Used to generate folderpaths to button images
+const createButtonPath = (folderNumber, imageNumber) => {
+  const buttonPath = `images/button_image/images_${folderNumber}/image-${imageNumber}_thumb.jpg,`;
+  return buttonPath;
+};
+
+// Escaping of single quotes is necessary for MySQL:
+const escapeSingleQuotes = (string) => {
+  let modifiedString = string;
+  if (string.indexOf("'") !== -1) {
+    modifiedString = string.replace(/'/g, "''");
+  }
+  return modifiedString;
+};
 
 // Each item in our database should contain some number of images, thumbnails, and button icons.
 // These images can be found within 'src\Images'.
@@ -48,60 +99,40 @@ connection.query(`CREATE TABLE IF NOT EXISTS items (
 // image files are created and stored.
 const createDummyData = (numberOfRecords) => {
   for (let n = 0; n < numberOfRecords; n += 1) {
-    let itemName = faker.fake('{{lorem.words}}');
-    let itemDescription = faker.fake('{{lorem.paragraph}}');
+    const itemName = escapeSingleQuotes(faker.fake('{{lorem.words}}'));
+    const itemDescription = escapeSingleQuotes(faker.fake('{{lorem.paragraph}}'));
+    const itemColor1 = faker.fake('{{lorem.word}}');
+    const itemColor2 = faker.fake('{{lorem.word}}');
+    const itemLowestPrice = faker.random.boolean();
+    const itemRating = faker.random.number(10000);
+    const optionCount = createOptionAndPictureCount();
+    const itemOptions = createItemOptions(optionCount);
     let itemColor1Images = '';
     let itemColor2Images = '';
     let itemColor1Thumbnails = '';
     let itemColor2Thumbnails = '';
     let itemColor1ButtonImage = '';
     let itemColor2ButtonImage = '';
-    let itemOptions = '';
-    const randomOptionNumber = Math.floor(Math.random() * Math.floor(5) + 1);
-    const itemColor1 = faker.fake('{{lorem.word}}');
-    const itemColor2 = faker.fake('{{lorem.word}}');
-    const itemLowestPrice = faker.fake('{{random.boolean}}');
-    const itemRating = faker.fake('{{random.number}}');
-
-    // Escaping of single quotes was necessary for MySQL:
-    if (itemDescription.indexOf("'") !== -1) {
-      const modifiedDesciption = itemDescription.replace(/'/g, "''");
-      itemDescription = modifiedDesciption;
-    }
-
-    // Escaping of single quotes was necessary for MySQL:
-    if (itemName.indexOf("'") !== -1) {
-      const modifiedName = itemName.replace(/'/g, "''");
-      itemName = modifiedName;
-    }
-
-    for (let i = 0; i < 2; i += 1) {
-      if (i < randomOptionNumber) {
-        itemOptions += `${faker.fake('{{hacker.adjective}}')}, `;
-      } else {
-        itemOptions += `${faker.fake('{{hacker.adjective}}')}`;
-      }
-    }
 
     // Create a randomized number of picture links for each one of the colors
     for (let color = 0; color <= 2; color += 1) {
-      const randomPictureCount = Math.floor(Math.random() * Math.floor(5) + 1);
+      const randomPictureCount = createOptionAndPictureCount();
 
       if (color < 1) {
         for (let picture = 0; picture < randomPictureCount; picture += 1) {
-          const randomFolderNumber = Math.floor(Math.random() * Math.floor(20) + 1);
-          const randomImageNumber = Math.floor(Math.random() * Math.floor(20) + 1);
-          itemColor1Images += `images/fullsize/images_${randomFolderNumber}/image-${randomImageNumber}.jpg,`;
-          itemColor1Thumbnails += `images/thumbnails/images_${randomFolderNumber}/image-${randomImageNumber}_thumb.jpg,`;
-          itemColor1ButtonImage = `images/button_image/images_${randomFolderNumber}/image-${randomImageNumber}_thumb.jpg,`;
+          const randomFolderNumber = createFolderAndImageNumber();
+          const randomImageNumber = createFolderAndImageNumber();
+          itemColor1Images += createImagePath(randomFolderNumber, randomImageNumber);
+          itemColor1Thumbnails += createThumbnailPath(randomFolderNumber, randomImageNumber);
+          itemColor1ButtonImage = createButtonPath(randomFolderNumber, randomImageNumber);
         }
       } else {
         for (let picture = 0; picture < randomPictureCount; picture += 1) {
-          const randomFolderNumber = Math.floor(Math.random() * Math.floor(20) + 1);
-          const randomImageNumber = Math.floor(Math.random() * Math.floor(20) + 1);
-          itemColor2Images += `images/fullsize/images_${randomFolderNumber}/image-${randomImageNumber}.jpg,`;
-          itemColor2Thumbnails += `images/thumbnails/images_${randomFolderNumber}/image-${randomImageNumber}_thumb.jpg,`;
-          itemColor2ButtonImage = `images/button_image/images_${randomFolderNumber}/image-${randomImageNumber}_thumb.jpg,`;
+          const randomFolderNumber = createFolderAndImageNumber();
+          const randomImageNumber = createFolderAndImageNumber();
+          itemColor2Images += createImagePath(randomFolderNumber, randomImageNumber);
+          itemColor2Thumbnails += createThumbnailPath(randomFolderNumber, randomImageNumber);
+          itemColor2ButtonImage = createButtonPath(randomFolderNumber, randomImageNumber);
         }
       }
     }
@@ -174,3 +205,5 @@ connection.query(`INSERT INTO items (
   // call createDummyData to generate remaining documents:
   createDummyData(99);
 });
+
+module.exports = createDummyData;

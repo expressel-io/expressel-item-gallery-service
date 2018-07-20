@@ -33,10 +33,17 @@ const pullItemInfo = (itemID) => {
     convertedResults.itemColor2 = data.Item_Color_2;
     convertedResults.itemLowestPrice = data.Item_Lowest_Price;
     convertedResults.itemRating = data.Item_Rating;
+    convertedResults.itemColor1Images = convertStringToArray(data.Item_Color_1_Images);
+    convertedResults.itemColor2Images = convertStringToArray(data.Item_Color_2_Images);
+    convertedResults.itemColor1Thumbnails = convertStringToArray(data.Item_Color_1_Thumbnails);
+    convertedResults.itemColor2Thumbnails = convertStringToArray(data.Item_Color_2_Thumbnails);
+    convertedResults.itemColor1ButtonImage = convertStringToArray(data.Item_Color_1_Button_Image);
+    convertedResults.itemColor2ButtonImage = convertStringToArray(data.Item_Color_2_Button_Image);
+    convertedResults.itemOptions = convertStringToArray(data.Item_Options);
+    console.log('The current results are: ', convertedResults)
   });
 };
 
 module.exports = {
-  convertStringToArray,
   pullItemInfo,
 };

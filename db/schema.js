@@ -79,7 +79,7 @@ const createThumbnailPath = (folderNumber, imageNumber) => {
 
 // Used to generate folderpaths to button images
 const createButtonPath = (folderNumber, imageNumber) => {
-  const buttonPath = `images/button_image/images_${folderNumber}/image-${imageNumber}_thumb.jpg,`;
+  const buttonPath = `images/button_image/images_${folderNumber}/image-${imageNumber}_thumb.jpg`;
   return buttonPath;
 };
 

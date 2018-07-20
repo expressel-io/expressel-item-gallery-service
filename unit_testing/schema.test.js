@@ -8,8 +8,6 @@ const { createThumbnailPath } = dataGenerationFunctions;
 const { createButtonPath } = dataGenerationFunctions;
 const { escapeSingleQuotes } = dataGenerationFunctions;
 
-console.log('test', createImagePath(2, 6));
-
 describe('createItemOptions', () => {
   test('Will return a string', () => {
     const output = createItemOptions(1);
@@ -76,7 +74,7 @@ describe('createButtonPath', () => {
   test('Should only export one path (no commas or spaces)', () => {
     const output = createButtonPath(1, 6);
     expect(output).not.toMatch(',');
-    expect(output).not.toMatch(' ')
+    expect(output).not.toMatch(' ');
   });
 });
 

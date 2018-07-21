@@ -4,6 +4,8 @@ const express = require('express');
 
 const bodyParser = require('body-parser');
 
+const dbQueries = require('../db/index.js');
+
 const app = express();
 
 const jsonParser = bodyParser.json();
@@ -18,7 +20,10 @@ app.get('/home', (req, res) => {
 
 app.get('/redirect', jsonParser, (req, res) => {
   if (!req.body) return res.sendStatus(400);
-  return res.send('A redirect action has been recieved');
+
+  return dbQueries.pullItemInfo(5, (convertedData) => {
+    res.send(convertedData);
+  });
 });
 
 app.listen(3001);

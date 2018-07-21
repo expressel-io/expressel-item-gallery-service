@@ -22,6 +22,10 @@ const convertStringToArray = (string) => {
   return resultArray;
 };
 
+// When provided an item ID, this function will query the items table and return
+// all results for that item. It will then create an object which will hold the converted results.
+// Conversion is necessary to convert the file path strings into arrays of file path strings.
+// These arrays will then be used to generate image components within the client.
 const pullItemInfo = (itemID) => {
   connection.query('SELECT * FROM items WHERE Item_ID = ?', [itemID], (error, results) => {
     if (error) throw error;
@@ -40,7 +44,7 @@ const pullItemInfo = (itemID) => {
     convertedResults.itemColor1ButtonImage = convertStringToArray(data.Item_Color_1_Button_Image);
     convertedResults.itemColor2ButtonImage = convertStringToArray(data.Item_Color_2_Button_Image);
     convertedResults.itemOptions = convertStringToArray(data.Item_Options);
-    console.log('The current results are: ', convertedResults)
+    return convertedResults;
   });
 };
 

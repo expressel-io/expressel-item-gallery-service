@@ -43,5 +43,9 @@ jobs:
 
       - run: npm install mysql
 
+      - run:
+          name: MySQL version
+          command: node create_db.js 
+
       # run tests!
       - run: npm run test

@@ -16,7 +16,7 @@ jobs:
         environment:
           MYSQL_ALLOW_EMPTY_PASSWORD: yes
           MYSQL_ROOT_PASSWORD: ''
-          MYSQL_DATABASE: circleci
+          MYSQL_DATABASE: items
 
     working_directory: ~/repo
 

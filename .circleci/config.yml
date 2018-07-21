@@ -38,13 +38,10 @@ jobs:
           name: Wait for DB
           command: dockerize -wait tcp://127.0.0.1:3306 -timeout 120s
 
-      - run: whoami
-
       - run: 
           command: whoami
 
-      - run: 
-          command: mysql -u root
+      - run: npm install mysql
 
       # run tests!
       - run: npm run test

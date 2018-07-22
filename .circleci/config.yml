@@ -45,7 +45,7 @@ jobs:
 
       - run:
           name: MySQL version
-          command: node create_db.js 
+          command: node unit_testing/create_db.js 
 
       # run tests!
       - run: npm run test

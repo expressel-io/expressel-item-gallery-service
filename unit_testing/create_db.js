@@ -17,11 +17,6 @@ connection.query('USE items;', (error) => {
   console.log('Using the items database.');
 });
 
-connection.query('DROP TABLE items', (err) => {
-  if (err) throw err;
-  console.log('Item table dropped');
-});
-
 // Create table 'items'
 connection.query(`CREATE TABLE items (
   Item_ID INTEGER NOT NULL AUTO_INCREMENT,
@@ -209,14 +204,4 @@ connection.query(`INSERT INTO items (
   // call createDummyData to generate remaining documents:
   createDummyData(99);
   console.log('Data insertion complete');
-});
-
-describe('test database', () => {
-  test('Should return a row', () => {
-    connection.query('SELECT * FROM items WHERE Item_ID = 1;', (err, results) => {
-      if (err) throw err;
-      const output = results;
-      expect(typeof output).toBeTruthy();
-    });
-  });
 });

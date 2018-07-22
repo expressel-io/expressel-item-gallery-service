@@ -96,14 +96,13 @@ describe('escapeSingleQuotes', () => {
 });
 
 describe('database population', () => {
-  connection.query('USE items;', (error) => {
-    if (error) throw error;
-  });
 
-  connection.query('SELECT * FROM items WHERE Item_ID = 1', (error, results) => {
-    if (error) throw error;
-    test('First row of the database should be the Macbook Pro', () => {
-      expect(results).toBeTruthy();
+  test('First row of the database should be the Macbook Pro', async () => {
+    expect.assertions(1);
+    const useItems = await connection.query('USE items;', (error) => {
+      if (error) throw error;
+      return 'Items table is being used';
     });
+    expect(useItems).toBeNull();
   });
 });

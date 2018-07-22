@@ -14,11 +14,6 @@ const connection = mysql.createConnection({
   password: '',
 });
 
-connection.query('SHOW databases;', (error, results) => {
-  if (error) throw error;
-  console.log('The databases are: ', results);
-});
-
 describe('createItemOptions', () => {
   test('Will return a string', () => {
     const output = createItemOptions(1);
@@ -97,5 +92,18 @@ describe('escapeSingleQuotes', () => {
   test('Should replace single quotes with two single quotes where they appear', () => {
     const output = escapeSingleQuotes('Cal\'s cooking is the best when he is drinking his friends\' beer');
     expect(output).toMatch('');
+  });
+});
+
+describe('database population', () => {
+  connection.query('USE items;', (error) => {
+    if (error) throw error;
+  });
+
+  connection.query('SELECT * FROM items WHERE Item_ID = 1', (error, results) => {
+    if (error) throw error;
+    test('First row of the database should be the Macbook Pro', () => {
+      expect(results).toBeTruthy();
+    });
   });
 });

@@ -107,3 +107,4 @@ describe('database population', () => {
     });
   });
 });
+process.exit();

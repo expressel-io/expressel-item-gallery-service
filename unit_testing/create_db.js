@@ -8,15 +8,15 @@ const connection = mysql.createConnection({
 
 connection.query('SHOW databases;', (error, results) => {
   if (error) throw error;
-  return results;
+  console.log(results);
 });
 
 connection.query('USE items;', (error, results) => {
   if (error) throw error;
-  return results;
+  console.log(results);
 });
 
 connection.query('SHOW tables;', (error, results) => {
   if (error) throw error;
-  return results;
+  console.log(results);
 });

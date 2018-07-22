@@ -97,12 +97,10 @@ describe('escapeSingleQuotes', () => {
 
 describe('database population', () => {
 
-  test('First row of the database should be the Macbook Pro', async () => {
-    expect.assertions(1);
-    const useItems = await connection.query('USE items;', (error) => {
+  test('First row of the database should be the Macbook Pro', () => {
+    connection.query('USE items;', (error, results) => {
       if (error) throw error;
-      return 'Items table is being used';
+      expect(results).toBeNull();
     });
-    expect(useItems).toBeNull();
   });
 });

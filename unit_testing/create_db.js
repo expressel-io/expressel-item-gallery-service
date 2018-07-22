@@ -206,7 +206,12 @@ connection.query(`INSERT INTO items (
   console.log('Data insertion complete');
 });
 
-connection.query('SELECT * FROM items WHERE Item_ID = 1;', (err, results) => {
-  if (err) throw err;
-  console.log('The data for the first row is: ', results);
+describe('test database', () => {
+  test('Should return a row', () => {
+    connection.query('SELECT * FROM items WHERE Item_ID = 1;', (err, results) => {
+      if (err) throw err;
+      const output = results;
+      expect(typeof output).toBeTruthy();
+    });
+  });
 });

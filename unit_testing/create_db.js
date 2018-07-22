@@ -17,8 +17,13 @@ connection.query('USE items;', (error) => {
   console.log('Using the items database.');
 });
 
+connection.query('DROP TABLE items', (err) => {
+  if (err) throw err;
+  console.log('Item table dropped');
+});
+
 // Create table 'items'
-connection.query(`CREATE TABLE IF NOT EXISTS items (
+connection.query(`CREATE TABLE items (
   Item_ID INTEGER NOT NULL AUTO_INCREMENT,
   Item_Name VARCHAR(500) NOT NULL,
   Item_Description LONGTEXT NOT NULL,

@@ -17,6 +17,11 @@ connection.query('USE items;', (error) => {
   console.log('Using the items database.');
 });
 
+connection.query('DROP TABLE IF EXISTS items;', (error) => {
+  if (error) throw error;
+  console.log('Items table has been deleted');
+});
+
 // Create table 'items'
 connection.query(`CREATE TABLE items (
   Item_ID INTEGER NOT NULL AUTO_INCREMENT,
@@ -204,4 +209,5 @@ connection.query(`INSERT INTO items (
   // call createDummyData to generate remaining documents:
   createDummyData(99);
   console.log('Data insertion complete');
+  process.exit();
 });

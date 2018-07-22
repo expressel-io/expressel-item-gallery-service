@@ -17,7 +17,7 @@ jobs:
     steps:
       - checkout
       - run: 
-          name: install dockerize
+          name: Install Dockerize
           command: wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && sudo tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
           environment:
             DOCKERIZE_VERSION: v0.3.0
@@ -27,21 +27,25 @@ jobs:
           - v1-dependencies-{{ checksum "package.json" }}
           - v1-dependencies-
 
-      - run: npm install
+      - run: 
+          name: Install npm
+          command: npm install
+
+      - run: 
+          name: Install mysql 
+          command: npm install mysql
 
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-      
+
       - run:
           name: Wait for DB
           command: dockerize -wait tcp://127.0.0.1:3306 -timeout 120s
 
-      - run: npm install mysql
-
       - run:
-          name: MySQL version
+          name: Create and Populate DB
           command: node unit_testing/create_db.js 
 
       # run tests!

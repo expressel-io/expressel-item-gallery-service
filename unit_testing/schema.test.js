@@ -1,12 +1,23 @@
+const mysql = require('mysql');
 const dataGenerationFunctions = require('../db/schema');
 
-const { createDummyData } = dataGenerationFunctions;
 const { createItemOptions } = dataGenerationFunctions;
 const { createFolderAndImageNumber } = dataGenerationFunctions;
 const { createImagePath } = dataGenerationFunctions;
 const { createThumbnailPath } = dataGenerationFunctions;
 const { createButtonPath } = dataGenerationFunctions;
 const { escapeSingleQuotes } = dataGenerationFunctions;
+
+const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: '',
+});
+
+connection.query('SHOW databases;', (error, results) => {
+  if (error) throw error;
+  console.log('The databases are: ', results);
+});
 
 describe('createItemOptions', () => {
   test('Will return a string', () => {

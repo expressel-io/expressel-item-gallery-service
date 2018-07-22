@@ -100,7 +100,7 @@ describe('database population', () => {
   test('First row of the database should be the Macbook Pro', () => {
     connection.query('USE items;', (error) => {
       if (error) throw error;
-      connection.query('SELECT * FROM items WHERE Item_ID = 1', (err, result) => {
+      connection.query('SELECT * FROM items WHERE Item_ID = 1;', (err, result) => {
         if (err) throw error;
         expect(result).toBeNull();
       });

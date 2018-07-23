@@ -46,7 +46,7 @@ jobs:
 
       - run:
           name: Create and Populate DB
-          command: node unit_testing/create_db.js 
+          command: node jest_tests/db_setup/create_db.js 
 
       # run tests!
       - run: npm run test

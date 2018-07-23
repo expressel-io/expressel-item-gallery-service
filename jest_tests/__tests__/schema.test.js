@@ -1,5 +1,5 @@
 const mysql = require('mysql');
-const dataGenerationFunctions = require('../db/schema');
+const dataGenerationFunctions = require('../../db/schema');
 
 const { createItemOptions } = dataGenerationFunctions;
 const { createFolderAndImageNumber } = dataGenerationFunctions;

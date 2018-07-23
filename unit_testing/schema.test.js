@@ -14,6 +14,10 @@ const connection = mysql.createConnection({
   password: '',
 });
 
+afterAll(() => {
+  connection.destroy();
+});
+
 describe('createItemOptions', () => {
   test('Will return a string', () => {
     const output = createItemOptions(1);
@@ -108,7 +112,7 @@ describe('database population', () => {
   test('First row of the database should be the Macbook Pro', (done) => {
     connection.query('SELECT * FROM items WHERE Item_ID = 1;', (err, result) => {
       if (err) throw error;
-      expect(result[0].Item_Name).toBe('');
+      expect(result[0].Item_Name).toBe('Apple MacBook Pro - Core i7 2.8 GHz - 16 GB RAM - 256 GB SSD');
       done();
     });
   });

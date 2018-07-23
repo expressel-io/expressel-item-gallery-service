@@ -209,5 +209,6 @@ connection.query(`INSERT INTO items (
   // call createDummyData to generate remaining documents:
   createDummyData(99);
   console.log('Data insertion complete');
+  connection.destroy();
   process.exit();
 });

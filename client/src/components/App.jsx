@@ -64,7 +64,6 @@ class App extends React.Component {
         <TitleAndStarRating
           name={Name}
           rating={Rating}
-          description={Description}
         />
       </h1>
     );

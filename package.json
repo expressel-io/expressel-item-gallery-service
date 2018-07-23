@@ -29,7 +29,7 @@
   "scripts": {
     "react-dev": "webpack -d --watch",
     "start": "nodemon server/index.js",
-    "test": "jest --detectOpenHandles"
+    "test": "jest --detectOpenHandles --coverage"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",

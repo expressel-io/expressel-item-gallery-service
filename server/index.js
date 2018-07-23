@@ -14,13 +14,12 @@ const jsonParser = bodyParser.json();
 // up static files:
 // app.use('/static', express.static(path.join(__dirname, '/../client/dist')));
 
-app.get('/home', (req, res) => {
+app.get('/app/home', (req, res) => {
   res.send('hello world');
 });
 
-app.get('/redirect', jsonParser, (req, res) => {
+app.get('/app/:productId', jsonParser, (req, res) => {
   if (!req.body) return res.sendStatus(400);
-
   return dbQueries.pullItemInfo(5, (convertedData) => {
     res.send(convertedData);
   });

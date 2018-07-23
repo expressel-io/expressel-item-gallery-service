@@ -1,12 +1,22 @@
+const mysql = require('mysql');
 const dataGenerationFunctions = require('../db/schema');
 
-const { createDummyData } = dataGenerationFunctions;
 const { createItemOptions } = dataGenerationFunctions;
 const { createFolderAndImageNumber } = dataGenerationFunctions;
 const { createImagePath } = dataGenerationFunctions;
 const { createThumbnailPath } = dataGenerationFunctions;
 const { createButtonPath } = dataGenerationFunctions;
 const { escapeSingleQuotes } = dataGenerationFunctions;
+
+const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: '',
+});
+
+afterAll(() => {
+  connection.destroy();
+});
 
 describe('createItemOptions', () => {
   test('Will return a string', () => {
@@ -86,5 +96,24 @@ describe('escapeSingleQuotes', () => {
   test('Should replace single quotes with two single quotes where they appear', () => {
     const output = escapeSingleQuotes('Cal\'s cooking is the best when he is drinking his friends\' beer');
     expect(output).toMatch('');
+  });
+});
+
+describe('database population', () => {
+
+  test('Should be able to connect to the table', (done) => {
+    connection.query('USE items;', (error, result) => {
+      if (error) throw error;
+      expect(result).not.toBe(null);
+      done();
+    });
+  });
+
+  test('First row of the database should be the Macbook Pro', (done) => {
+    connection.query('SELECT * FROM items WHERE Item_ID = 1;', (err, result) => {
+      if (err) throw error;
+      expect(result[0].Item_Name).toBe('Apple MacBook Pro - Core i7 2.8 GHz - 16 GB RAM - 256 GB SSD');
+      done();
+    });
   });
 });

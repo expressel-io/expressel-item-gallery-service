@@ -6,9 +6,9 @@ function Rating(props) {
   return (
     <div className="rating">
       {rating}
-      <div className="lowestPrice">
+      <h2 className="lowestPrice">
         {lowestPrice}
-      </div>
+      </h2>
     </div>
   );
 }

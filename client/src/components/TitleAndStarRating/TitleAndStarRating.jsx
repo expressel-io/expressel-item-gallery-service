@@ -1,18 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import style from '../../style/TitleAndStarRating.css';
 import Rating from './Rating/Rating';
 
-function TitleAndStarRating(props) {
-  const { name, rating, lowestPrice } = props;
-  return (
-    <div className="titleAndStarRating">
-      <h1 className="productName">
-        {name}
-      </h1>
-      <Rating rating={rating} lowestPrice={lowestPrice} />
-    </div>
-  );
+class TitleAndStarRating extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = ({});
+    this.handleDummyClick = this.handleDummyClick.bind(this);
+  }
+
+  handleDummyClick() {
+    alert('Sorry, that page is unavailable.');
+  }
+
+  render() {
+    const { name, rating, lowestPrice } = this.props;
+    return (
+      <div className="titleAndStarRating">
+        <h1 className="productName">
+          {name}
+        </h1>
+        <Rating
+          rating={rating}
+          lowestPrice={lowestPrice}
+          handleDummyClick={this.handleDummyClick}
+        />
+      </div>
+    );
+  }
 }
 
 TitleAndStarRating.propTypes = {

@@ -7,11 +7,21 @@ function Rating(props) {
     <div>
       <div className="rating">
         <span className="stars">
-          <span className="star">&#9733;</span>
-          <span className="star">&#9733;</span>
-          <span className="star">&#9733;</span>
-          <span className="star">&#9733;</span>
-          <span className="star">&#9733;</span>
+          <span className="star">
+            &#9733;
+          </span>
+          <span className="star">
+            &#9733;
+          </span>
+          <span className="star">
+            &#9733;
+          </span>
+          <span className="star">
+            &#9733;
+          </span>
+          <span className="star">
+            &#9733;
+          </span>
         </span>
         <span id="reviewsLink" onClick={handleDummyClick} onKeyPress={handleDummyClick} role="link" tabIndex="0">
           {`${rating} reviews`}
@@ -26,7 +36,7 @@ function Rating(props) {
 
 Rating.propTypes = {
   rating: PropTypes.number.isRequired,
-  lowestPrice: PropTypes.bool.isRequired,
+  lowestPrice: PropTypes.string.isRequired,
   handleDummyClick: PropTypes.func.isRequired,
 };
 

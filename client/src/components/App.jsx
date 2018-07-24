@@ -59,14 +59,20 @@ class App extends React.Component {
       Color1ButtonImage,
       Color2ButtonImage,
     } = this.state;
+
+    if (Name !== null) {
+      return (
+        <h1>
+          <TitleAndStarRating
+            name={Name}
+            rating={Rating}
+            lowestPrice={LowestPrice}
+          />
+        </h1>
+      );
+    }
     return (
-      <h1>
-        <TitleAndStarRating
-          name={Name}
-          rating={Rating}
-          lowestPrice={LowestPrice}
-        />
-      </h1>
+      <div />
     );
   }
 }

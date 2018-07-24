@@ -1,0 +1,65 @@
+#app {
+  display: block;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  max-width: 1280px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.titleAndStarRating {
+  position: relative;
+  margin-right: 16px;
+  margin-left: 16px;
+}
+
+.productName {
+  font-size: 0.95em;
+  font-weight: 400;
+  margin-bottom: 0px;
+  padding: 0;
+  line-height: 1.72em;
+  color: rgba(0,0,0,0.87);
+}
+
+.rating {
+  flex-direction: row;
+  margin-top: 0px;
+}
+
+.star {
+  margin-right: 4px;
+  color: #f4b400;
+  font-size: 16px;
+  height: 16px;
+  width: 16px;
+}
+
+#reviewsLink {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  color: #3367d6;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+#reviewsLink:hover {
+  text-decoration: underline;
+}
+
+#lowestPriceBadge {
+  color: rgb(255, 255, 255);
+  background-color: rgb(245, 124, 1);
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 4px 16px;
+}
+
+
+
+
+
+
+

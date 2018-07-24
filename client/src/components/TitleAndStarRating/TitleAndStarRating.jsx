@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import Rating from './Rating/Rating';
 
 function TitleAndStarRating(props) {
-  const { name, rating } = props;
+  const { name, rating, lowestPrice } = props;
   return (
     <div className="titleAndStarRating">
-      <h1>
+      <h1 className="productName">
         {name}
       </h1>
-      <Rating rating={rating} />
+      <Rating rating={rating} lowestPrice={lowestPrice} />
     </div>
   );
 }
@@ -17,6 +17,7 @@ function TitleAndStarRating(props) {
 TitleAndStarRating.propTypes = {
   name: PropTypes.string.isRequired,
   rating: PropTypes.number.isRequired,
+  lowestPrice: PropTypes.bool.isRequired,
 };
 
 export default TitleAndStarRating;

@@ -19,7 +19,7 @@ class App extends React.Component {
       Color2Thumbnails: null,
       Color1ButtonImage: null,
       Color2ButtonImage: null,
-
+      CurrentColor: null,
     };
   }
 
@@ -40,6 +40,7 @@ class App extends React.Component {
         Color2Thumbnails: d.itemColor2Thumbnails,
         Color1ButtonImage: d.itemColor1ButtonImage,
         Color2ButtonImage: d.itemColor2ButtonImage,
+        CurrentColor: d.itemColor1,
       });
     });
   }
@@ -59,6 +60,7 @@ class App extends React.Component {
       Color2Thumbnails,
       Color1ButtonImage,
       Color2ButtonImage,
+      CurrentColor,
     } = this.state;
 
     if (Name !== null) {
@@ -75,6 +77,7 @@ class App extends React.Component {
               color2Images={Color2Images}
               color1Thumbnails={Color1Thumbnails}
               color2Thumbnails={Color2Thumbnails}
+              currentColor={CurrentColor}
             />
           </div>
         </h1>

@@ -8,6 +8,7 @@ function ProductOverview(props) {
     color2Images,
     color1Thumbnails,
     color2Thumbnails,
+    currentColor,
   } = props;
   return (
     <div className="overviewColumn">
@@ -30,4 +31,5 @@ ProductOverview.propTypes = {
   color2Images: PropTypes.arrayOf(PropTypes.string).isRequired,
   color1Thumbnails: PropTypes.arrayOf(PropTypes.string).isRequired,
   color2Thumbnails: PropTypes.arrayOf(PropTypes.string).isRequired,
+  currentColor: PropTypes.string.isRequired,
 };

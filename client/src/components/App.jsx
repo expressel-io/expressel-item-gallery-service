@@ -1,5 +1,6 @@
 import React from 'react';
 import TitleAndStarRating from './TitleAndStarRating/TitleAndStarRating';
+import ProductOverview from './ProductOverview/ProductOverview';
 
 class App extends React.Component {
   constructor(props) {
@@ -68,6 +69,14 @@ class App extends React.Component {
             rating={Rating}
             lowestPrice={LowestPrice}
           />
+          <div className="productInfoRow">
+            <ProductOverview
+              color1Images={Color1Images}
+              color2Images={Color2Images}
+              color1Thumbnails={Color1Thumbnails}
+              color2Thumbnails={Color2Thumbnails}
+            />
+          </div>
         </h1>
       );
     }

@@ -7,7 +7,9 @@ function Rating(props) {
   function generateLPBadge() {
     if (lowestPrice === 'true') {
       return (
-        'Lowest Price'
+        <span id="lowestPriceBadge">
+          Lowest Price
+        </span>
       );
     }
     return (
@@ -39,9 +41,7 @@ function Rating(props) {
           {`${rating} reviews`}
         </span>
       </div>
-      <span id="lowestPriceBadge">
-        {generateLPBadge()}
-      </span>
+      {generateLPBadge()}
     </div>
   );
 }

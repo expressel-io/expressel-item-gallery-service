@@ -27,7 +27,7 @@ const convertStringToArray = (string) => {
 // Conversion is necessary to convert the file path strings into arrays of file path strings.
 // These arrays will then be used to generate image components within the client.
 const pullItemInfo = (itemID, cb) => {
-  connection.query('SELECT * FROM items WHERE Item_ID = ?', [itemID], (error, results) => {
+  connection.query('SELECT * FROM items WHERE Item_ID = ?;', [itemID], (error, results) => {
     if (error) throw error;
     const data = results[0];
     const convertedResults = {};

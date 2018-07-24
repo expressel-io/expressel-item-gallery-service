@@ -2,13 +2,9 @@ const express = require('express');
 
 // const path = require('path');
 
-const bodyParser = require('body-parser');
-
 const dbQueries = require('../db/index.js');
 
 const app = express();
-
-const jsonParser = bodyParser.json();
 
 app.use(express.static(`${__dirname}/../client/dist`));
 
@@ -18,9 +14,9 @@ app.get('/app/home', (req, res) => {
   });
 });
 
-app.get('/app/product/:productId', jsonParser, (req, res) => {
-  if (!req.body) return res.sendStatus(400);
-  return dbQueries.pullItemInfo(5, (convertedData) => {
+app.get('/app/product/:productId', (req, res) => {
+  const itemID = req.params.productId;
+  dbQueries.pullItemInfo(itemID, (convertedData) => {
     res.send(convertedData);
   });
 });

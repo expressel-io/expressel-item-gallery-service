@@ -14,6 +14,11 @@ class ProductOverview extends React.Component {
       thumbnails,
     } = this.props;
 
+    this.thumbnailElements = thumbnails.map(thumbnail => (
+      <div className="thumbnail" key={thumbnail}>
+        <img src={`${aws}${thumbnail}`} alt="" />
+      </div>));
+
     return (
       <div className="overviewColumn">
         <div id="productImageView">
@@ -21,7 +26,9 @@ class ProductOverview extends React.Component {
             <div id="imageView">
               <img src={`${aws}${images[0]}`} alt="" />
             </div>
-            <div id="thumbNails" />
+            <div id="thumbnailPicker">
+              {this.thumbnailElements}
+            </div>
           </div>
         </div>
       </div>

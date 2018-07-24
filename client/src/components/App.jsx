@@ -77,6 +77,9 @@ class App extends React.Component {
                 images={Color1Images}
                 thumbnails={Color1Thumbnails}
               />
+              <div>
+                Second Component will be Placed Here
+              </div>
             </div>
           </h1>
         );
@@ -93,6 +96,9 @@ class App extends React.Component {
               images={Color2Images}
               thumbnails={Color2Thumbnails}
             />
+            <div>
+              Second Component will be Placed Here
+            </div>
           </div>
         </h1>
       );

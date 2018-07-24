@@ -16,7 +16,7 @@ class ProductOverview extends React.Component {
 
     this.thumbnailElements = thumbnails.map(thumbnail => (
       <div className="thumbnail" key={thumbnail}>
-        <img src={`${aws}${thumbnail}`} alt="" />
+        <img className="thumbnailImage" src={`${aws}${thumbnail}`} alt="" />
       </div>));
 
     return (

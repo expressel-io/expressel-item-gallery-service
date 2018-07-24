@@ -32,7 +32,7 @@ class TitleAndStarRating extends React.Component {
 
 TitleAndStarRating.propTypes = {
   name: PropTypes.string.isRequired,
-  rating: PropTypes.number.isRequired,
+  rating: PropTypes.string.isRequired,
   lowestPrice: PropTypes.string.isRequired,
 };
 

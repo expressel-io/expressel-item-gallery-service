@@ -3,6 +3,18 @@ import PropTypes from 'prop-types';
 
 function Rating(props) {
   const { rating, lowestPrice, handleDummyClick } = props;
+
+  function generateLPBadge() {
+    if (lowestPrice === 'true') {
+      return (
+        'Lowest Price'
+      );
+    }
+    return (
+      ''
+    );
+  }
+
   return (
     <div>
       <div className="rating">
@@ -27,15 +39,15 @@ function Rating(props) {
           {`${rating} reviews`}
         </span>
       </div>
-      <h2 className="lowestPrice">
-        {lowestPrice}
-      </h2>
+      <span id="lowestPriceBadge">
+        {generateLPBadge()}
+      </span>
     </div>
   );
 }
 
 Rating.propTypes = {
-  rating: PropTypes.number.isRequired,
+  rating: PropTypes.string.isRequired,
   lowestPrice: PropTypes.string.isRequired,
   handleDummyClick: PropTypes.func.isRequired,
 };

@@ -64,6 +64,23 @@ class App extends React.Component {
     } = this.state;
 
     if (Name !== null) {
+      if (CurrentColor === Color1) {
+        return (
+          <h1>
+            <TitleAndStarRating
+              name={Name}
+              rating={Rating}
+              lowestPrice={LowestPrice}
+            />
+            <div className="productInfoRow">
+              <ProductOverview
+                images={Color1Images}
+                thumbnails={Color1Thumbnails}
+              />
+            </div>
+          </h1>
+        );
+      }
       return (
         <h1>
           <TitleAndStarRating
@@ -73,11 +90,8 @@ class App extends React.Component {
           />
           <div className="productInfoRow">
             <ProductOverview
-              color1Images={Color1Images}
-              color2Images={Color2Images}
-              color1Thumbnails={Color1Thumbnails}
-              color2Thumbnails={Color2Thumbnails}
-              currentColor={CurrentColor}
+              images={Color2Images}
+              thumbnails={Color2Thumbnails}
             />
           </div>
         </h1>

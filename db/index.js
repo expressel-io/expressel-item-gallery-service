@@ -36,7 +36,7 @@ const pullItemInfo = (itemID, cb) => {
     convertedResults.itemColor1 = data.Item_Color_1;
     convertedResults.itemColor2 = data.Item_Color_2;
     convertedResults.itemLowestPrice = data.Item_Lowest_Price;
-    convertedResults.itemRating = data.Item_Rating;
+    convertedResults.itemRating = data.Item_Rating.toLocaleString('en');
     convertedResults.itemColor1Images = convertStringToArray(data.Item_Color_1_Images);
     convertedResults.itemColor2Images = convertStringToArray(data.Item_Color_2_Images);
     convertedResults.itemColor1Thumbnails = convertStringToArray(data.Item_Color_1_Thumbnails);

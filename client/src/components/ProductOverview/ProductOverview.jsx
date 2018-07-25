@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import HiddenImageView from './HiddenImageView';
 import aws from '../../../../AWS/aws_key';
 
 class ProductOverview extends React.Component {
@@ -7,6 +8,7 @@ class ProductOverview extends React.Component {
     super(props);
     this.state = {
       hideHiddenImageView: true,
+      currentImage: '',
     };
     this.updateCurrentImage = this.updateCurrentImage.bind(this);
     this.toggleImageView = this.toggleImageView.bind(this);
@@ -21,33 +23,17 @@ class ProductOverview extends React.Component {
 
     const {
       currentImage,
+      hideHiddenImageView,
     } = this.state;
 
     const sourceData = currentImage || `${aws}${images[0]}`;
 
-    const style = this.state.hideHiddenImageView ? { display: 'none' } : {};
-
-    this.hiddenImageView = (
-      <div id="hiddenImageView">
-        <div id="hiddenCarosel">
-          <div id="hiddenExitBar">
-          Test1
-          </div>
-          <div id="hiddenImage">
-          Test2
-          </div>
-          <div id="hiddenThumbnails">
-          Test3
-          </div>
-        </div>
-      </div>
-    );
+    const style = hideHiddenImageView ? { display: 'none' } : {};
 
     this.thumbnailElements = thumbnails.map(thumbnail => (
       <div className="thumbnail" key={thumbnail} role="button" tabIndex="-1" onMouseEnter={this.updateCurrentImage}>
         <img className="thumbnailImage" src={`${aws}${thumbnail}`} alt="" />
       </div>));
-
 
     return (
       <div className="overviewColumn">
@@ -56,13 +42,13 @@ class ProductOverview extends React.Component {
             <div id="imageView" onClick={this.toggleImageView} onKeyDown={this.toggleImageView} role="button" tabIndex="0">
               <img src={sourceData} alt="" />
             </div>
-            <div id="thumbnailPicker">
+            <div className="thumbnailPicker">
               {this.thumbnailElements}
             </div>
           </div>
         </div>
         <div id="hiddenImageViewContainer" style={style}>
-          {this.hiddenImageView}
+          <HiddenImageView currentImage={currentImage} images={images} thumbnails={thumbnails} />
         </div>
       </div>
     );

@@ -84,12 +84,12 @@
   border-bottom: 4px solid #4285f4;
 }
 
-.thumbnail:selected {
-  border: 4px solid #4285f4
-}
-
 .thumbnailImage {
   margin: 8px;
+}
+
+#imageView:focus {
+ outline: none;
 }
 
 

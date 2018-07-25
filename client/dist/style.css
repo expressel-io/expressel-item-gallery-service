@@ -92,4 +92,12 @@
  outline: none;
 }
 
+#hiddenImageViewContainer {
+  position: absolute;
+  background-color: #222;
+  width: 100%
+}
 
+#hiddenImageView {
+  text-align: center;
+}

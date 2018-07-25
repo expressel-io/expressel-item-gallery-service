@@ -5,7 +5,9 @@ import aws from '../../../../AWS/aws_key';
 class ProductOverview extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      hideHiddenImageView: true,
+    };
     this.updateCurrentImage = this.updateCurrentImage.bind(this);
     this.toggleImageView = this.toggleImageView.bind(this);
     this.generateDefaultView = this.generateDefaultView.bind(this);
@@ -21,12 +23,31 @@ class ProductOverview extends React.Component {
       currentImage,
     } = this.state;
 
+    const sourceData = currentImage || `${aws}${images[0]}`;
+
+    const style = this.state.hideHiddenImageView ? { display: 'none' } : {};
+
+    this.hiddenImageView = (
+      <div id="hiddenImageView">
+        <div id="hiddenCarosel">
+          <div id="hiddenExitBar">
+          Test1
+          </div>
+          <div id="hiddenImage">
+          Test2
+          </div>
+          <div id="hiddenThumbnails">
+          Test3
+          </div>
+        </div>
+      </div>
+    );
+
     this.thumbnailElements = thumbnails.map(thumbnail => (
       <div className="thumbnail" key={thumbnail} role="button" tabIndex="-1" onMouseEnter={this.updateCurrentImage}>
         <img className="thumbnailImage" src={`${aws}${thumbnail}`} alt="" />
       </div>));
 
-    const sourceData = currentImage || `${aws}${images[0]}`;
 
     return (
       <div className="overviewColumn">
@@ -40,6 +61,9 @@ class ProductOverview extends React.Component {
             </div>
           </div>
         </div>
+        <div id="hiddenImageViewContainer" style={style}>
+          {this.hiddenImageView}
+        </div>
       </div>
     );
   }
@@ -51,10 +75,10 @@ class ProductOverview extends React.Component {
     });
   }
 
-  toggleImageView(e) {
-    this.setState({
-      bigImage: e.target.src,
-    });
+  toggleImageView() {
+    this.setState(prevState => ({
+      hideHiddenImageView: !prevState.hideHiddenImageView,
+    }));
   }
 
   render() {

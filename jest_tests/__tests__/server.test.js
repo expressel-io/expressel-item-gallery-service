@@ -1,8 +1,7 @@
 // This is our test file. We tell just to use the mock version on line 4
 import * as fetchData from '../server_functions_working/fetchData';
 
-// jest.mock('../server_functions_working/server_request');
-jest.mock('../server_functions_working/server_request', () => {}, { virtual: true });
+jest.mock('../server_functions_working/server_request');
 
 
 // The assertion for a promise must be returned.

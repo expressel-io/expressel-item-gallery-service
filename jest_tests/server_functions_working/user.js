@@ -3,6 +3,6 @@
 // We expect this to return a promise
 import request from './request';
 
-export function getUserName(userID) {
-  return request(`/users/${userID}`).then(user => user.name);
+export function getMacBookData() {
+  return request('/app/home').then(macBookProData => macBookProData);
 }
